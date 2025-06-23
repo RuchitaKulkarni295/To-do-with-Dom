@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+h1{
+    color:blue;
+    text-shadow: tan;
+    text-decoration:4.5px solid black underline;
+}
+button{
+    margin-left: 10px;
+}
+li{
+    margin-top: 10px;
+}
+</style>
+<body>
+    <h1>To do list</h1>
+   <input type="text" placeholder="Enter your task">
+    <button type="submit">Add task</button>
+    <ul>
+        <li>Eat<button class="delete">delete</button></li>
+        <li>Sleep<button class="delete">delete</button></li>
+    </ul>
+
+    <script>
+        let input=document.querySelector("input");
+        let button=document.querySelector("button");
+        let ul=document.querySelector("ul");
+        button.addEventListener("click",function(){
+            let item=document.createElement("li");
+            // console.log(input.value);
+            item.innerText=input.value;
+
+
+            let delbtn=document.createElement("button");
+            delbtn.innerText="delete";
+            delbtn.classList.add("delete");
+
+            item.appendChild(delbtn);
+            ul.appendChild(item);
+            input.value=" ";
+            input[placeholder]="Enter your task";
+        });
+
+         ul.addEventListener("click",function(event){
+            console.log(event.target.parentElement);  //it tells which element triggers the element
+            if(event.target.nodeName=="BUTTON"){
+                let listItem=event.target.parentElement;
+                listItem.remove();
+                console.log("delete");
+            }
+            else{
+                console.log("dont delete");
+            }
+         })
+
+    </script>
+</body>
+</html>
